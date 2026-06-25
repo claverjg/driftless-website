@@ -11,7 +11,12 @@ if [ -n "${NPM_BIN:-}" ]; then
 elif command -v npm >/dev/null 2>&1; then
   npm_bin="$(command -v npm)"
 else
-  npm_bin="$(find /opt/cpanel -path '*/bin/npm' -type f 2>/dev/null | sort -V | tail -n 1 || true)"
+  npm_bin="$(
+    {
+      find "$HOME/nodevenv" -path '*/bin/npm' -type f 2>/dev/null
+      find /opt/cpanel /opt/alt /usr/local /usr -path '*/bin/npm' -type f 2>/dev/null
+    } | sort -V | tail -n 1 || true
+  )"
 fi
 
 if [ -z "${npm_bin:-}" ]; then
