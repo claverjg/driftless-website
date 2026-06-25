@@ -25,7 +25,7 @@ export function ContactSection() {
               size="lg"
               className="h-11 bg-emerald-300 px-5 text-black hover:bg-emerald-200"
             >
-              <Link href="mailto:hello@driftless.com.au">
+              <Link href="mailto:deploy@driftless.com.au">
                 <CalendarClock aria-hidden="true" className="size-4" />
                 Book a Strategy Call
               </Link>
@@ -36,9 +36,9 @@ export function ContactSection() {
               size="lg"
               className="h-11 border-white/15 bg-transparent px-5 text-white hover:bg-white/10"
             >
-              <Link href="mailto:hello@driftless.com.au">
+              <Link href="mailto:deploy@driftless.com.au">
                 <Mail aria-hidden="true" className="size-4" />
-                hello@driftless.com.au
+                deploy@driftless.com.au
               </Link>
             </Button>
           </div>
