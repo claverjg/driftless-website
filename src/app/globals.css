@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,8 +49,8 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: oklch(0.08 0.035 265);
+  --foreground: oklch(0.985 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -84,7 +84,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(0.08 0.035 265);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -123,8 +123,201 @@
   }
   body {
     @apply bg-background text-foreground;
+    text-rendering: geometricPrecision;
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .driftless-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.055) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+  }
+
+  .animate-spin-slow {
+    animation: driftless-spin 8s linear infinite;
+  }
+
+  .driftless-scanline {
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgb(52 211 153 / 0.08) 50%,
+      transparent 100%
+    );
+    animation: driftless-scan 9s ease-in-out infinite;
+  }
+
+  .driftless-glass-lines {
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 0%, rgb(0 0 0 / 0.82) 44%, transparent 100%);
+  }
+
+  .driftless-glass-lines::before,
+  .driftless-glass-lines::after {
+    content: "";
+    position: absolute;
+    inset: -18% -12% 0;
+    filter: blur(0.35px);
+    will-change: transform, opacity;
+  }
+
+  .driftless-glass-lines::before {
+    background:
+      linear-gradient(180deg, transparent 0 12%, rgb(255 255 255 / 0.06) 13%, transparent 23%),
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(52 211 153 / 0.12) 11%,
+        transparent 19%,
+        rgb(103 232 249 / 0.09) 31%,
+        transparent 43%,
+        rgb(255 255 255 / 0.07) 52%,
+        transparent 66%,
+        rgb(52 211 153 / 0.1) 82%,
+        transparent 100%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 11px,
+        rgb(52 211 153 / 0.2) 12px,
+        transparent 14px,
+        transparent 51px,
+        rgb(103 232 249 / 0.11) 52px,
+        transparent 55px,
+        transparent 119px,
+        rgb(255 255 255 / 0.07) 120px,
+        transparent 122px,
+        transparent 173px,
+        rgb(52 211 153 / 0.08) 174px,
+        transparent 180px,
+        transparent 247px
+      ),
+      radial-gradient(ellipse at 18% 8%, rgb(103 232 249 / 0.16), transparent 24%),
+      linear-gradient(104deg, transparent 34%, rgb(255 255 255 / 0.1), transparent 43%);
+    background-size: 100% 37px, 260% 100%, 317px 100%, 75% 100%, 180% 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 18%, 94% 18%, 94% 38%, 100% 38%, 100% 100%, 0 100%, 0 72%, 6% 72%, 6% 54%, 0 54%);
+    transform: skewX(-9deg);
+    animation: driftless-glass-slide 16s linear infinite;
+  }
+
+  .driftless-glass-lines::after {
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0 41px,
+        rgb(103 232 249 / 0.11) 42px,
+        transparent 44px,
+        transparent 113px,
+        rgb(52 211 153 / 0.09) 114px,
+        transparent 119px,
+        transparent 196px,
+        rgb(255 255 255 / 0.05) 197px,
+        transparent 198px
+      ),
+      linear-gradient(90deg, transparent, rgb(52 211 153 / 0.07), transparent 38%),
+      radial-gradient(ellipse at 74% 16%, rgb(52 211 153 / 0.16), transparent 22%);
+    background-size: 271px 100%, 220% 100%, 68% 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 68%, 88% 68%, 88% 46%, 73% 46%, 73% 92%, 61% 92%, 61% 34%, 44% 34%, 44% 76%, 32% 76%, 32% 18%, 18% 18%, 18% 58%, 0 58%);
+    opacity: 0.72;
+    transform: translateX(-8%) skewX(13deg);
+    animation: driftless-glass-drift 21s ease-in-out infinite alternate;
+  }
+
+  .driftless-glass-lines {
+    background:
+      linear-gradient(90deg, transparent 6%, rgb(255 255 255 / 0.08) 7%, transparent 8%),
+      linear-gradient(90deg, transparent 22%, rgb(52 211 153 / 0.13) 23%, transparent 25%),
+      linear-gradient(90deg, transparent 39%, rgb(103 232 249 / 0.12) 40%, transparent 42%),
+      linear-gradient(90deg, transparent 63%, rgb(52 211 153 / 0.1) 64%, transparent 67%),
+      linear-gradient(90deg, transparent 81%, rgb(255 255 255 / 0.06) 82%, transparent 84%);
+    background-size: 417px 48%, 263px 74%, 521px 42%, 337px 61%, 601px 53%;
+    background-position: 0 0, 14px 18px, -40px 7px, 80px 26px, -120px 4px;
+    animation: driftless-glass-shards 18s ease-in-out infinite alternate;
+  }
+
+  .driftless-float {
+    animation: driftless-float 11s ease-in-out infinite;
+  }
+}
+
+@keyframes driftless-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes driftless-scan {
+  0%,
+  100% {
+    transform: translateY(-35%);
+  }
+  50% {
+    transform: translateY(35%);
+  }
+}
+
+@keyframes driftless-glass-slide {
+  from {
+    background-position: 0 0, 0% 0, 0 0, 0 0, 0% 0;
+  }
+  to {
+    background-position: 0 37px, 260% 0, 317px 0, 30px 0, 180% 0;
+  }
+}
+
+@keyframes driftless-glass-drift {
+  0% {
+    opacity: 0.38;
+    transform: translate3d(-10%, -2%, 0) skewX(13deg);
+    background-position: 0 0, 0% 0;
+  }
+  42% {
+    opacity: 0.82;
+  }
+  100% {
+    opacity: 0.54;
+    transform: translate3d(7%, 3%, 0) skewX(13deg);
+    background-position: 271px 0, 220% 0;
+  }
+}
+
+@keyframes driftless-glass-shards {
+  0% {
+    opacity: 0.52;
+    background-position: 0 0, 14px 18px, -40px 7px, 80px 26px, -120px 4px;
+  }
+  50% {
+    opacity: 0.88;
+  }
+  100% {
+    opacity: 0.64;
+    background-position: 90px 10px, -70px 28px, 120px 0, -40px 38px, 60px 16px;
+  }
+}
+
+@keyframes driftless-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-24px, 18px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 }
