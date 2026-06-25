@@ -14,8 +14,9 @@ This site is configured for cPanel Git deployment as a static Next.js export.
 
 The checked-in `.cpanel.yml` runs `scripts/cpanel-deploy.sh`, which:
 
-- installs dependencies with `npm ci`
-- builds the static export with `npm run build`
+- uses the checked-in static export in `out/`
 - copies `out/` into `/home/driftles/public_html`
 
-If cPanel cannot find `npm`, set `NPM_BIN` in `.cpanel.yml` to the full npm path provided by your host.
+Build locally with `npm run build` and commit the updated `out/` folder before using cPanel deployment.
+
+If you intentionally want cPanel to rebuild instead of using the checked-in export, set `CPANEL_BUILD=1` before running the deploy script. This requires Node.js/npm and enough server resources for the Next.js build.

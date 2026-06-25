@@ -6,26 +6,31 @@ DEPLOYPATH="${DEPLOYPATH:-$HOME/public_html}"
 
 cd "$REPOPATH"
 
-if [ -n "${NPM_BIN:-}" ]; then
-  npm_bin="$NPM_BIN"
-elif command -v npm >/dev/null 2>&1; then
-  npm_bin="$(command -v npm)"
+if [ "${CPANEL_BUILD:-0}" = "1" ] || [ ! -f out/index.html ]; then
+  if [ -n "${NPM_BIN:-}" ]; then
+    npm_bin="$NPM_BIN"
+  elif command -v npm >/dev/null 2>&1; then
+    npm_bin="$(command -v npm)"
+  else
+    npm_bin="$(
+      {
+        find "$HOME/nodevenv" -path '*/bin/npm' -type f 2>/dev/null
+        find /opt/cpanel /opt/alt /usr/local /usr -path '*/bin/npm' -type f 2>/dev/null
+      } | sort -V | tail -n 1 || true
+    )"
+  fi
+
+  if [ -z "${npm_bin:-}" ]; then
+    echo "npm was not found and no checked-in out/index.html exists." >&2
+    echo "Build locally, commit out/, or enable Node.js/npm in cPanel." >&2
+    exit 1
+  fi
+
+  "$npm_bin" ci --include=dev
+  "$npm_bin" run build
 else
-  npm_bin="$(
-    {
-      find "$HOME/nodevenv" -path '*/bin/npm' -type f 2>/dev/null
-      find /opt/cpanel /opt/alt /usr/local /usr -path '*/bin/npm' -type f 2>/dev/null
-    } | sort -V | tail -n 1 || true
-  )"
+  echo "Using checked-in static export from out/"
 fi
-
-if [ -z "${npm_bin:-}" ]; then
-  echo "npm was not found. Enable Node.js/npm in cPanel or set NPM_BIN." >&2
-  exit 1
-fi
-
-"$npm_bin" ci --include=dev
-"$npm_bin" run build
 
 mkdir -p "$DEPLOYPATH"
 
