@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
@@ -18,7 +18,17 @@ export function SiteFooter() {
             className="object-contain object-left"
           />
         </Link>
-        <p>Platform Engineering / Azure / Kubernetes / GitOps / Infrastructure as Code</p>
+        <div className="flex flex-col gap-3 md:items-end">
+          <p>Platform Engineering / Azure / Kubernetes / GitOps / Infrastructure as Code</p>
+          <nav aria-label="Footer navigation" className="flex gap-4 text-zinc-400">
+            <Link href="/blog" className="transition hover:text-emerald-200">
+              Blog
+            </Link>
+            <Link href="/#contact" className="transition hover:text-emerald-200">
+              Contact
+            </Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );

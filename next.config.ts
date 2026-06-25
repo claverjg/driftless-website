@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
         pathname: "/driftless-logo.png",
         search: "?v=20260625-4",
       },
+      {
+        pathname: "/blog/**",
+      },
     ],
   },
   reactCompiler: true,

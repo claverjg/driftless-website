@@ -5,10 +5,11 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Services", href: "#services" },
-  { label: "GitOps", href: "#gitops" },
-  { label: "Offers", href: "#offers" },
-  { label: "Contact", href: "#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "GitOps", href: "/#gitops" },
+  { label: "Offers", href: "/#offers" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function SiteHeader() {
@@ -50,7 +51,7 @@ export function SiteHeader() {
           size="lg"
           className="h-9 border border-emerald-300/30 bg-emerald-300 text-black hover:bg-emerald-200"
         >
-          <Link href="#contact">
+          <Link href="/#contact">
             Book a Call
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </Link>
