@@ -24,7 +24,7 @@ if [ -z "${npm_bin:-}" ]; then
   exit 1
 fi
 
-"$npm_bin" ci
+"$npm_bin" ci --include=dev
 "$npm_bin" run build
 
 mkdir -p "$DEPLOYPATH"
