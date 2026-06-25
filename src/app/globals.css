@@ -155,6 +155,7 @@
 
   .driftless-glass-lines {
     overflow: hidden;
+    mix-blend-mode: screen;
     mask-image: linear-gradient(to bottom, black 0%, rgb(0 0 0 / 0.82) 44%, transparent 100%);
   }
 
@@ -163,44 +164,45 @@
     content: "";
     position: absolute;
     inset: -18% -12% 0;
-    filter: blur(0.35px);
+    filter: blur(0.25px) drop-shadow(0 0 18px rgb(52 211 153 / 0.16));
     will-change: transform, opacity;
   }
 
   .driftless-glass-lines::before {
     background:
-      linear-gradient(180deg, transparent 0 12%, rgb(255 255 255 / 0.06) 13%, transparent 23%),
+      linear-gradient(180deg, transparent 0 12%, rgb(255 255 255 / 0.12) 13%, transparent 23%),
       linear-gradient(
         90deg,
         transparent 0%,
-        rgb(52 211 153 / 0.12) 11%,
+        rgb(52 211 153 / 0.2) 11%,
         transparent 19%,
-        rgb(103 232 249 / 0.09) 31%,
+        rgb(103 232 249 / 0.16) 31%,
         transparent 43%,
-        rgb(255 255 255 / 0.07) 52%,
+        rgb(255 255 255 / 0.16) 52%,
         transparent 66%,
-        rgb(52 211 153 / 0.1) 82%,
+        rgb(52 211 153 / 0.16) 82%,
         transparent 100%
       ),
       repeating-linear-gradient(
         90deg,
         transparent 0 11px,
-        rgb(52 211 153 / 0.2) 12px,
+        rgb(52 211 153 / 0.28) 12px,
         transparent 14px,
         transparent 51px,
-        rgb(103 232 249 / 0.11) 52px,
+        rgb(103 232 249 / 0.18) 52px,
         transparent 55px,
         transparent 119px,
-        rgb(255 255 255 / 0.07) 120px,
+        rgb(255 255 255 / 0.15) 120px,
         transparent 122px,
         transparent 173px,
-        rgb(52 211 153 / 0.08) 174px,
+        rgb(52 211 153 / 0.14) 174px,
         transparent 180px,
         transparent 247px
       ),
-      radial-gradient(ellipse at 18% 8%, rgb(103 232 249 / 0.16), transparent 24%),
-      linear-gradient(104deg, transparent 34%, rgb(255 255 255 / 0.1), transparent 43%);
-    background-size: 100% 37px, 260% 100%, 317px 100%, 75% 100%, 180% 100%;
+      radial-gradient(ellipse at 18% 8%, rgb(103 232 249 / 0.24), transparent 24%),
+      linear-gradient(104deg, transparent 32%, rgb(255 255 255 / 0.2), transparent 40%),
+      linear-gradient(78deg, transparent 57%, rgb(255 255 255 / 0.18), transparent 61%);
+    background-size: 100% 37px, 260% 100%, 317px 100%, 75% 100%, 180% 100%, 230% 100%;
     clip-path: polygon(0 0, 100% 0, 100% 18%, 94% 18%, 94% 38%, 100% 38%, 100% 100%, 0 100%, 0 72%, 6% 72%, 6% 54%, 0 54%);
     transform: skewX(-9deg);
     animation: driftless-glass-slide 16s linear infinite;
@@ -211,31 +213,31 @@
       repeating-linear-gradient(
         90deg,
         transparent 0 41px,
-        rgb(103 232 249 / 0.11) 42px,
+        rgb(103 232 249 / 0.18) 42px,
         transparent 44px,
         transparent 113px,
-        rgb(52 211 153 / 0.09) 114px,
+        rgb(52 211 153 / 0.16) 114px,
         transparent 119px,
         transparent 196px,
-        rgb(255 255 255 / 0.05) 197px,
+        rgb(255 255 255 / 0.12) 197px,
         transparent 198px
       ),
-      linear-gradient(90deg, transparent, rgb(52 211 153 / 0.07), transparent 38%),
-      radial-gradient(ellipse at 74% 16%, rgb(52 211 153 / 0.16), transparent 22%);
+      linear-gradient(90deg, transparent, rgb(52 211 153 / 0.12), transparent 38%),
+      radial-gradient(ellipse at 74% 16%, rgb(52 211 153 / 0.24), transparent 22%);
     background-size: 271px 100%, 220% 100%, 68% 100%;
     clip-path: polygon(0 0, 100% 0, 100% 68%, 88% 68%, 88% 46%, 73% 46%, 73% 92%, 61% 92%, 61% 34%, 44% 34%, 44% 76%, 32% 76%, 32% 18%, 18% 18%, 18% 58%, 0 58%);
-    opacity: 0.72;
+    opacity: 0.86;
     transform: translateX(-8%) skewX(13deg);
     animation: driftless-glass-drift 21s ease-in-out infinite alternate;
   }
 
   .driftless-glass-lines {
     background:
-      linear-gradient(90deg, transparent 6%, rgb(255 255 255 / 0.08) 7%, transparent 8%),
-      linear-gradient(90deg, transparent 22%, rgb(52 211 153 / 0.13) 23%, transparent 25%),
-      linear-gradient(90deg, transparent 39%, rgb(103 232 249 / 0.12) 40%, transparent 42%),
-      linear-gradient(90deg, transparent 63%, rgb(52 211 153 / 0.1) 64%, transparent 67%),
-      linear-gradient(90deg, transparent 81%, rgb(255 255 255 / 0.06) 82%, transparent 84%);
+      linear-gradient(90deg, transparent 6%, rgb(255 255 255 / 0.16) 7%, transparent 8%),
+      linear-gradient(90deg, transparent 22%, rgb(52 211 153 / 0.22) 23%, transparent 25%),
+      linear-gradient(90deg, transparent 39%, rgb(103 232 249 / 0.2) 40%, transparent 42%),
+      linear-gradient(90deg, transparent 63%, rgb(52 211 153 / 0.18) 64%, transparent 67%),
+      linear-gradient(90deg, transparent 81%, rgb(255 255 255 / 0.13) 82%, transparent 84%);
     background-size: 417px 48%, 263px 74%, 521px 42%, 337px 61%, 601px 53%;
     background-position: 0 0, 14px 18px, -40px 7px, 80px 26px, -120px 4px;
     animation: driftless-glass-shards 18s ease-in-out infinite alternate;
@@ -264,24 +266,24 @@
 
 @keyframes driftless-glass-slide {
   from {
-    background-position: 0 0, 0% 0, 0 0, 0 0, 0% 0;
+    background-position: 0 0, 0% 0, 0 0, 0 0, 0% 0, 0% 0;
   }
   to {
-    background-position: 0 37px, 260% 0, 317px 0, 30px 0, 180% 0;
+    background-position: 0 37px, 260% 0, 317px 0, 30px 0, 180% 0, 230% 0;
   }
 }
 
 @keyframes driftless-glass-drift {
   0% {
-    opacity: 0.38;
+    opacity: 0.5;
     transform: translate3d(-10%, -2%, 0) skewX(13deg);
     background-position: 0 0, 0% 0;
   }
   42% {
-    opacity: 0.82;
+    opacity: 0.95;
   }
   100% {
-    opacity: 0.54;
+    opacity: 0.66;
     transform: translate3d(7%, 3%, 0) skewX(13deg);
     background-position: 271px 0, 220% 0;
   }
@@ -289,14 +291,14 @@
 
 @keyframes driftless-glass-shards {
   0% {
-    opacity: 0.52;
+    opacity: 0.68;
     background-position: 0 0, 14px 18px, -40px 7px, 80px 26px, -120px 4px;
   }
   50% {
-    opacity: 0.88;
+    opacity: 1;
   }
   100% {
-    opacity: 0.64;
+    opacity: 0.78;
     background-position: 90px 10px, -70px 28px, 120px 0, -40px 38px, 60px 16px;
   }
 }
