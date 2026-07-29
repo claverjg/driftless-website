@@ -8,13 +8,24 @@ export function AnnouncementBar() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="relative overflow-hidden border-b border-white/10 bg-black">
+    <div className="relative overflow-hidden border-b border-white/10 bg-[#050b08]">
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent"
+      />
       <motion.div
         aria-hidden="true"
         className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-emerald-300/15 to-transparent blur-md"
         initial={reduceMotion ? false : { x: "-120%" }}
         animate={reduceMotion ? undefined : { x: ["-120%", "320%"] }}
         transition={{ duration: 7, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent blur-md"
+        initial={reduceMotion ? false : { x: "-140%" }}
+        animate={reduceMotion ? undefined : { x: ["-140%", "420%"] }}
+        transition={{ duration: 9, repeat: Infinity, repeatDelay: 1, ease: "easeInOut", delay: 1.5 }}
       />
       <Link
         href="/blog/argocd-applicationset-ui-platform-teams"
