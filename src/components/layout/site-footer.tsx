@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { SocialLinks } from "@/components/social/social-links";
+
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-[#030806]">
@@ -28,6 +30,7 @@ export function SiteFooter() {
               Contact
             </Link>
           </nav>
+          <SocialLinks className="justify-start md:justify-end" />
         </div>
       </div>
     </footer>

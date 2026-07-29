@@ -32,7 +32,7 @@ export function HeroSection() {
               className="h-11 bg-emerald-300 px-5 text-black hover:bg-emerald-200"
             >
               <Link href="#contact">
-                Book a Strategy Call
+                Contact Us
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </Button>

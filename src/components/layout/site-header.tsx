@@ -52,7 +52,7 @@ export function SiteHeader() {
           className="h-9 border border-emerald-300/30 bg-emerald-300 text-black hover:bg-emerald-200"
         >
           <Link href="/#contact">
-            Book a Call
+            Contact Us
             <ArrowUpRight aria-hidden="true" className="size-4" />
           </Link>
         </Button>
