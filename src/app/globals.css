@@ -246,6 +246,48 @@
   .driftless-float {
     animation: driftless-float 11s ease-in-out infinite;
   }
+
+  .driftless-glass-shimmer {
+    overflow: hidden;
+    filter: blur(0.5px);
+    mask-image: linear-gradient(to bottom, black 0%, black 45%, transparent 92%);
+  }
+
+  .driftless-glass-shimmer::before {
+    content: "";
+    position: absolute;
+    inset: -10% -6%;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0 22px,
+      rgb(52 211 153 / 0.24) 23px,
+      transparent 29px,
+      transparent 74px,
+      rgb(103 232 249 / 0.2) 75px,
+      transparent 81px,
+      transparent 151px,
+      rgb(255 255 255 / 0.14) 152px,
+      transparent 156px,
+      transparent 233px,
+      rgb(52 211 153 / 0.16) 234px,
+      transparent 240px,
+      transparent 318px
+    );
+    background-size: 380px 100%;
+    animation: driftless-shimmer-drift 26s linear infinite;
+  }
+
+  .driftless-glass-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 42% 60% at 26% 22%, rgb(52 211 153 / 0.22), transparent 65%),
+      radial-gradient(ellipse 30% 50% at 68% 12%, rgb(103 232 249 / 0.18), transparent 65%),
+      radial-gradient(ellipse 26% 46% at 88% 34%, rgb(255 255 255 / 0.1), transparent 65%);
+    mix-blend-mode: screen;
+    animation: driftless-shimmer-pulse 9s ease-in-out infinite alternate;
+  }
 }
 
 @keyframes driftless-spin {
@@ -310,6 +352,24 @@
   }
   50% {
     transform: translate3d(-24px, 18px, 0);
+  }
+}
+
+@keyframes driftless-shimmer-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 380px 0;
+  }
+}
+
+@keyframes driftless-shimmer-pulse {
+  0% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

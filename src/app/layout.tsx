@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
+import { AnnouncementBar } from "@/components/layout/announcement-bar";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -35,7 +37,10 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable} dark h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <AnnouncementBar />
+        {children}
+      </body>
     </html>
   );
 }

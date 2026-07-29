@@ -7,10 +7,8 @@ import { Button } from "@/components/ui/button";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden border-b border-white/10">
-      <div className="absolute inset-0 driftless-grid opacity-60" aria-hidden="true" />
-      <div className="driftless-glass-lines absolute inset-x-0 top-0 h-64 opacity-100" aria-hidden="true" />
-      <div className="absolute inset-0 driftless-scanline opacity-30" aria-hidden="true" />
-      <div className="absolute left-1/2 top-0 h-80 w-[42rem] -translate-x-1/2 rounded-full bg-emerald-400/20 blur-3xl" aria-hidden="true" />
+      <div className="absolute inset-0 driftless-grid opacity-40" aria-hidden="true" />
+      <div className="driftless-glass-shimmer absolute inset-0" aria-hidden="true" />
       <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-cyan-300/10 blur-3xl driftless-float" aria-hidden="true" />
       <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] w-full max-w-7xl items-center gap-14 px-5 py-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
         <div>
